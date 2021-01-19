@@ -1,0 +1,25 @@
+#!/bin/bash
+
+while true; do
+
+	~/dwm_scripts/dwmweather > ~/dwm_scripts/dwmweather.txt
+	~/dwm_scripts/dwmupdates > ~/dwm_scripts/dwmupdates.txt
+
+	sleep 3600s
+
+done &
+
+while true; do
+
+	VOL=$(~/dwm_scripts/dwmvol)
+	CPU=$(~/dwm_scripts/dwmcpu)
+	MEM=$(~/dwm_scripts/dwmmemory)
+	NET=$(~/dwm_scripts/dwmnet)
+	HDD=$(~/dwm_scripts/dwmdisk)
+	UPDATES=$(< ~/dwm_scripts/dwmupdates.txt)
+	TIME=$(~/dwm_scripts/dwmclock)
+	xsetroot -name "| $CPU | $MEM | $NET | $TEMP | $HDD | $UPDATES | $VOL | $TIME"
+
+	sleep 5s
+	
+done &
